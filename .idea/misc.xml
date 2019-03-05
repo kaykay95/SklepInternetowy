@@ -3,4 +3,10 @@
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="ES6" />
   </component>
+  <component name="ProjectPlainTextFileTypeManager">
+    <file url="file://$PROJECT_DIR$/src/Migrations/Version20190304133416.php" />
+    <file url="file://$PROJECT_DIR$/src/Migrations/Version20190304134407.php" />
+    <file url="file://$PROJECT_DIR$/src/Migrations/Version20190304135350.php" />
+    <file url="file://$PROJECT_DIR$/src/Migrations/Version20190304140341.php" />
+  </component>
 </project>
