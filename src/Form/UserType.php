@@ -10,6 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class UserType extends AbstractType
 {
@@ -33,6 +34,11 @@ class UserType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('name', TextType::class)
+            ->add('surname', TextType::class)
+            ->add('street', TextType::class)
+            ->add('city', TextType::class)
+            ->add('postcode', TextType::class)
         ;
     }
 

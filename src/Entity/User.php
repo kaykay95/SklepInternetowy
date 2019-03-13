@@ -33,6 +33,31 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="string", length=128)
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="string", length=128)
+     */
+    private $surname;
+
+    /**
+     * @ORM\Column(type="string", length=128)
+     */
+    private $street;
+
+    /**
+     * @ORM\Column(type="string", length=128)
+     */
+    private $city;
+
+    /**
+     * @ORM\Column(type="string", length=128)
+     */
+    private $postcode;
+
     public function __construct()
     {
         $this->roles = array('ROLE_USER');
@@ -94,6 +119,57 @@ class User implements UserInterface
 
         return $this;
     }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function setName($name): void
+    {
+        $this->name = $name;
+    }
+
+    public function getSurname()
+    {
+        return $this->surname;
+    }
+
+    public function setSurname($surname): void
+    {
+        $this->surname = $surname;
+    }
+
+    public function getStreet()
+    {
+        return $this->street;
+    }
+
+    public function setStreet($street): void
+    {
+        $this->street = $street;
+    }
+
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    public function setCity($city): void
+    {
+        $this->city = $city;
+    }
+
+    public function getPostcode()
+    {
+        return $this->postcode;
+    }
+
+    public function setPostcode($postcode): void
+    {
+        $this->postcode = $postcode;
+    }
+
 
     /**
      * @see UserInterface
