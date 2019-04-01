@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ product.name }}{% endblock title %}
+
+{% block main %}
+    <div class="row"> <h2>{{ product.name }}</h2> </div>
+    <div class= "jumbotron row">
+        <div class="col-6 imageContainer">
+            <img src="data:image/jpg;base64,{{ image }}"/>
+
+        </div>
+         <div class="col-6 jumbotron text-center">
+            <h3>Cena: {{ product.price }} zł</h3><br>
+             <a data-toggle="modal" href="#" class="btn btn-primary my-2" >Negocjuj</a>
+             <a href="#" class="btn btn-secondary my-2">Kup teraz</a>
+        </div>
+    </div>
+    <div class="text-center">
+        <h3>Opis produktu:</h3>
+        <p> {{ product.description|nl2br }} </p> <br>
+    </div>
+{% endblock %}

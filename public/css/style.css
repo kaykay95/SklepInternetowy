@@ -1,3 +1,27 @@
 .main {
     margin-top: 20px;
 }
+
+.imageContainer{
+     max-width: 500px;
+     height:auto;
+ }
+
+.imageContainer img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.imageContainerSmall{
+    max-width: 300px;
+    height:auto;
+}
+
+.imageContainerSmall img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.jumbotron {
+    background-color: #fff;
+}

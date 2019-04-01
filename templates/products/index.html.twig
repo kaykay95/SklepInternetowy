@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+
+    {% for key, product in products %}
+    <div class="card flex-md-row">
+        <div class="col-8">
+            <div class="card-header"><h4><a href="/product/{{ product.id }}">{{ product.name }}</a></h4></div>
+            <div class="row jumbotron">
+                <div class="col imageContainerSmall">
+                    <img src="data:image/jpg;base64,{{ images[key] }}">
+                </div>
+                <div class="col">
+                    <p>{{ product.description|nl2br }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-4 jumbotron text-center">
+            <h4>{{ product.price }} zł</h4>
+            <a data-toggle="modal" href="#" class="btn btn-primary my-2" >Negocjuj</a> <br>
+            <a href="#" class="btn btn-secondary my-2">Kup teraz</a>
+        </div>
+    </div>
+    {% endfor %}
+{#    {% for key, product in products %}
+        <div class="card flex-md-row">
+            <div class="imageContainerSmall"><img class="card-img-left flex-auto" src="data:image/jpg;base64,{{ images[key] }}"></div>
+            <div class="card-body d-flex flex-column align-items-end">
+                <h3><a href="/product/{{ product.id }}">{{ product.name }}</a></h3>
+                <p class="card-text">Cena: {{ product.price }}</p>
+            </div>
+        </div>
+    {% endfor %}#}
+{% endblock %}

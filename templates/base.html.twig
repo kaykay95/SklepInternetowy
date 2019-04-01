@@ -22,26 +22,26 @@
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div class="container">
 
-            <a class="navbar-brand" href="{{ path('home_page') }}">Home</a>
+            <a class="navbar-brand" href="{{ path('home_page') }}">Sklep internetowy</a>
 
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Products</a>
+                        <a class="nav-link" href="{{ path('products') }}">Produkty</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
                     {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('register') }}">Sign Up</a>
+                            <a class="nav-link" href="{{ path('register') }}">Zarejestruj się</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('login') }}">Login</a>
+                            <a class="nav-link" href="{{ path('login') }}">Zaloguj</a>
                         </li>
                     {% endif %}
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('logout') }}">Logout</a>
+                            <a class="nav-link" href="{{ path('logout') }}">Wyloguj</a>
                         </li>
                     {% endif %}
                 </ul>

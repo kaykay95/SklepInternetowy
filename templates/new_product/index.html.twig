@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nowy produkt{% endblock %}
+
+{% block main %}
+    <h1>Nowy produkt</h1>
+
+    {{ form_start(product) }}
+    <div class="form-row">
+        {{ form_label(product.name, 'Nazwa') }}
+        {{ form_widget(product.name) }}
+    </div>
+    <div class="form-row">
+        {{ form_label(product.description, 'Opis') }}
+        {{ form_widget(product.description) }}
+    </div>
+    <div class="form-row">
+        {{ form_label(product.price, 'Cena nominalna') }}
+        {{ form_widget(product.price) }}
+    </div>
+    <div class="form-row">
+        {{ form_label(product.minimalPrice, 'Cena minimalna') }}
+        {{ form_widget(product.minimalPrice) }}
+    </div>
+    <div class="form-row">
+        {{ form_label(product.negotiationRatio, 'Współczynnik negocjacji') }}
+        {{ form_widget(product.negotiationRatio) }}
+    </div>
+    <br>
+    <div class="form-row">
+        <button class="btn">Dodaj</button>
+    </div>
+    {{ form_end(product) }}
+{% endblock %}
