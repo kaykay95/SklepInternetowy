@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sklep internetowy{% endblock %}
+
+{% block main %}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+        <div class="jumbotron text-center">
+            <h1>Gratulacje!</h1>
+            <div class="jumbotron text-center">
+
+                <p>Udało Ci się zakupić produkt <b>{{ transaction.product.name }}</b> <br>
+                    w cenie <b>{{ transaction.price }}</b> zł.</p>
+
+                <img class="jumbotron center-block imageContainer" src="data:image/jpg;base64,{{ image }}"/>
+
+                <ul style="list-style-type:none;">
+                    <li>Sztuk: {{ transaction.quantity }}</li>
+                    <li>Do zapłacenia: {{ transaction.amount }} zł</li>
+                    <li>Ilość przeprowadzonych negocjacji: {{ negotiationCount }}</li>
+                    <li>Uzyskana zniżka: {{ transaction.discount * transaction.quantity}} zł</li>
+                </ul>
+    {% if transaction.lastNegotiation != 0 %}
+                <div class="jumbotron text-center">
+                    <h3>Czy jesteś zadololony z przeprowadzonej negocjacji?</h3>
+                    <a href="/vote/{{ transaction.id }}/true" type="button" class="btn btn-primary my-2">Tak</a>
+                    <a href="/vote/{{ transaction.id }}/false" type="button" class="btn btn-secondary my-2">Nie</a>
+                </div>
+    {% endif %}
+            </div>
+        </div>
+
+{% endblock %}

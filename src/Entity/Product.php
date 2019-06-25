@@ -3,12 +3,18 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
  */
 class Product
 {
+    public function __construct()
+    {
+        $this->negotiations = new ArrayCollection();
+        $this->transactions = new ArrayCollection();
+    }
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -45,6 +51,13 @@ class Product
      * @ORM\Column(type="blob")
      */
     private $picture;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Negotiation", mappedBy="product")
+     */
+    private $negotiations;
+
 
     public function getId(): ?int
     {
@@ -116,5 +129,15 @@ class Product
     {
         $this->picture = $picture;
     }
+
+    /**
+     * @return Collection|Negotiation[]
+     */
+    public function getNegotiations()
+    {
+        return $this->negotiations;
+    }
+
+
 
 }

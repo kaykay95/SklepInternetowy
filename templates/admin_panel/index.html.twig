@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panel Administratora{% endblock title %}
+
+{% block main %}
+    <div><a href="{{ path('product_management') }}">Zarządzanie produktami</a></div>
+    <div><a href="{{ path('negotiation_management') }}">Ustawienia negocjacji</a></div>
+    <br>
+    <div><a href="{{ path('negotiation_review') }}">Przegląd negocjacji</a></div>
+    <div><a href="{{ path('transaction_review') }}">Przegląd transakcji</a></div>
+{% endblock %}

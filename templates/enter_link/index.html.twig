@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sklep internetowy{% endblock %}
+
+{% block main %}
+<div class="text-center jumbotron">
+    <p>Podaj link konkurencyjnego produktu:</p>
+    {{ form_start(negotiation)}}
+    {{ form_widget(negotiation.competitorLink, {'type':'url', 'attr': { 'size':'30'}}) }}
+    <button type="submit" class="btn btn-primary modal-submit">Wyślij</button>
+    {{ form_end(negotiation) }}
+</div>
+{% endblock %}

@@ -4,14 +4,14 @@
     {% if errors %}
         {{ errors.messageKey }}
     {% endif %}
-
-    <form action="{{ path('login') }}" method="post">
-        <label for="username">Username:</label>
+    <div class="text-center jumbotron">
+    <form class="form-signin" action="{{ path('login') }}" method="post">
+        <h1>Zaloguj się:</h1><br>
+        <label for="username">Email: </label>
         <input type="text" name="_username" id="username" value="{{ username }}">
-        <label for="password">Password</label>
-        <input type="password" name="_password" id="password">
-
-        <button type="submit">Login</button>
+        <label for="password">Hasło: </label>
+        <input type="password" name="_password" id="password"> <br><br>
+        <button class="btn btn-lg btn-primary" type="submit">Zaloguj</button>
     </form>
-
+    </div>
 {% endblock %}

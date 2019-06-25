@@ -3,32 +3,23 @@
 {% block main %}
 
     {% for key, product in products %}
-    <div class="card flex-md-row">
-        <div class="col-8">
-            <div class="card-header"><h4><a href="/product/{{ product.id }}">{{ product.name }}</a></h4></div>
+    <div class="card">
+        <div class="card-header">
+            <h4><a href="/product/{{ product.id }}">{{ product.name }}</a></h4>
+        </div>
+        <div class="card-body">
             <div class="row jumbotron">
-                <div class="col imageContainerSmall">
+                <div class="col-4  imageContainerSmall">
                     <img src="data:image/jpg;base64,{{ images[key] }}">
                 </div>
-                <div class="col">
+                <div class="col-4 ">
                     <p>{{ product.description|nl2br }}</p>
                 </div>
+                <div class="col-4 content_center text-center">
+                    <h2>{{ product.price }} zł</h2>
+                </div>
             </div>
-        </div>
-        <div class="col-4 jumbotron text-center">
-            <h4>{{ product.price }} zł</h4>
-            <a data-toggle="modal" href="#" class="btn btn-primary my-2" >Negocjuj</a> <br>
-            <a href="#" class="btn btn-secondary my-2">Kup teraz</a>
         </div>
     </div>
     {% endfor %}
-{#    {% for key, product in products %}
-        <div class="card flex-md-row">
-            <div class="imageContainerSmall"><img class="card-img-left flex-auto" src="data:image/jpg;base64,{{ images[key] }}"></div>
-            <div class="card-body d-flex flex-column align-items-end">
-                <h3><a href="/product/{{ product.id }}">{{ product.name }}</a></h3>
-                <p class="card-text">Cena: {{ product.price }}</p>
-            </div>
-        </div>
-    {% endfor %}#}
 {% endblock %}

@@ -1,18 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Zarejestruj się{% endblock %}
 
 {% block main %}
-    <h1>Register</h1>
+    <h1>Zarejestruj się</h1>
 
     {{ form_start(registrationForm) }}
-    {{ form_row(registrationForm.email) }}
-    {{ form_row(registrationForm.plainPassword) }}
-    {{ form_row(registrationForm.name) }}
-    {{ form_row(registrationForm.surname) }}
-    {{ form_row(registrationForm.street) }}
-    {{ form_row(registrationForm.city) }}
-    {{ form_row(registrationForm.postcode) }}
-    <button class="btn">Register</button>
+    <div class="form-row">
+        {{ form_label(registrationForm.email, 'Email') }}
+        {{ form_widget(registrationForm.email) }}
+    </div>
+    <div class="form-row">
+        {{ form_label(registrationForm.plainPassword, 'Hasło') }}
+        {{ form_widget(registrationForm.plainPassword) }}
+    </div>
+    <div class="form-row">
+        {{ form_label(registrationForm.name, 'Imię') }}
+        {{ form_widget(registrationForm.name) }}
+    </div>
+    <div class="form-row">
+        {{ form_label(registrationForm.surname, 'Nazwisko') }}
+        {{ form_widget(registrationForm.surname) }}
+    </div>
+    <div class="form-row">
+        {{ form_label(registrationForm.street, 'Ulica') }}
+        {{ form_widget(registrationForm.street) }}
+    </div>
+    <div class="form-row">
+        {{ form_label(registrationForm.city, 'Miasto') }}
+        {{ form_widget(registrationForm.city) }}
+    </div>
+    <div class="form-row">
+        {{ form_label(registrationForm.postcode, 'Kod pocztowy') }}
+        {{ form_widget(registrationForm.postcode) }}
+    </div><br>
+    <button class="btn">Zarejestruj</button>
     {{ form_end(registrationForm) }}
 {% endblock %}

@@ -1,0 +1,126 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style type="text/css">
+    .table-wrapper {
+    width: 700px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    }
+    .table-title {
+    padding-bottom: 10px;
+    margin: 0 0 10px;
+    }
+    .table-title h2 {
+    margin: 6px 0 0;
+    font-size: 22px;
+    }
+    .table-title .add-new {
+    float: right;
+    text-shadow: none;
+    border-radius: 50px;
+    }
+    .table-title .add-new i {
+    margin-right: 4px;
+    }
+    table.table {
+    table-layout: fixed;
+    }
+    table.table tr th, table.table tr td {
+    border-color: #e9e9e9;
+    }
+    table.table th i {
+    font-size: 13px;
+    margin: 0 5px;
+    cursor: pointer;
+    }
+    table.table th:last-child {
+    width: 100px;
+    }
+    table.table td a {
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 5px;
+    min-width: 24px;
+    }
+    table.table td a.add {
+    color: #27C46B;
+    }
+
+    table.table td i {
+    font-size: 19px;
+    }
+    table.table td a.add i {
+    font-size: 24px;
+    margin-right: -1px;
+    position: relative;
+    top: 3px;
+    }
+    table.table .form-control {
+    height: 32px;
+    line-height: 32px;
+    box-shadow: none;
+    border-radius: 2px;
+    }
+    table.table .form-control.error {
+    border-color: #f50000;
+    }
+    table.table td .add {
+    display: none;
+    }
+</style>
+{% endblock %}
+
+{% block title %}Zarządzanie produktami{% endblock %}
+
+{% block main %}
+    <div class="container">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <h2>Zarządzanie produktami</h2>
+                        </div>
+                        <div class="col-sm-4">
+                            <a type="button" class="btn btn-primary add-new" href="{{ path('new_product')}}"><b>+</b> Dodaj nowy</a>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-bordered">
+                    <thead>
+                    <th>Nazwa</th>
+                    <th>Akcje</th>
+                    </thead>
+                    <tbody>
+                    {% for key, product in products %}
+                        <tr>
+                            <td>{{ product.name }}</td>
+                            <td>
+                                <a class="edit" title="Edytuj" data-toggle="tooltip" href="/editproduct/{{ product.id }}"><i class="material-icons">&#xE254;</i></a>
+                                <a class="delete" title="Usuń" data-toggle="tooltip"  href="{{ path('delete_product', {'id': product.id}) }}" onclick="return confirm('Czy usunąć produkt?')"><i class="material-icons">&#xE872;</i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+    </div>
+{#    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Czy usunąć produkt?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <button type="submit" class="btn btn-primary modal-submit">Usuń</button>
+                </div>
+            </div>
+        </div>
+    </div>#}
+{% endblock %}

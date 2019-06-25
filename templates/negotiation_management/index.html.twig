@@ -1,0 +1,167 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script>
+        $(document).ready(function() {
+            $('#negotiationTable').DataTable({
+                "language": {
+                    "decimal":        "",
+                    "emptyTable":     "Brak danych w tabeli",
+                    "info":           "",
+                    "infoEmpty":      "Brak danych",
+                    "infoFiltered":   "",
+                    "infoPostFix":    "",
+                    "thousands":      ",",
+                    "lengthMenu":     "Pokaż: _MENU_ ",
+                    "loadingRecords": "Proszę czekać...",
+                    "processing":     "Przetwarzam...",
+                    "search":         "Szukaj:",
+                    "zeroRecords":    "Brak odpowiednich rekordów",
+                    "paginate": {
+                        "first":      "Pierwsza",
+                        "last":       "Ostatnia",
+                        "next":       "Następna",
+                        "previous":   "Poprzednia"
+                    },
+                    "aria": {
+                        "sortAscending":  "",
+                        "sortDescending": ""
+                    }
+                }
+            });
+        } );
+    </script>
+    <style type="text/css">
+        .table-wrapper {
+            width: 700px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        }
+        .table-title {
+            padding-bottom: 10px;
+            margin: 0 0 10px;
+        }
+        .table-title h2 {
+            margin: 6px 0 0;
+            font-size: 22px;
+        }
+        .table-title .add-new {
+            float: right;
+            text-shadow: none;
+            border-radius: 50px;
+        }
+        .table-title .add-new i {
+            margin-right: 4px;
+        }
+        table.table {
+            table-layout: fixed;
+        }
+        table.table tr th, table.table tr td {
+            border-color: #e9e9e9;
+        }
+        table.table th i {
+            font-size: 13px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        table.table th:last-child {
+            width: 100px;
+        }
+        table.table td a {
+            cursor: pointer;
+            display: inline-block;
+            margin: 0 5px;
+            min-width: 24px;
+        }
+        table.table td a.add {
+            color: #27C46B;
+        }
+
+        table.table td i {
+            font-size: 19px;
+        }
+        table.table td a.add i {
+            font-size: 24px;
+            margin-right: -1px;
+            position: relative;
+            top: 3px;
+        }
+        table.table .form-control {
+            height: 32px;
+            line-height: 32px;
+            box-shadow: none;
+            border-radius: 2px;
+        }
+        table.table .form-control.error {
+            border-color: #f50000;
+        }
+        table.table td .add {
+            display: none;
+        }
+    </style>
+{% endblock %}
+
+
+{% block title %}Ustawienia negocjacji{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h2>Ustawienia negocjacji</h2>
+                    </div>
+                    <div class="col-sm-4">
+                        <a href="#" type="button" class="btn btn-primary add-new" data-toggle="modal" data-target="#new"><b>+</b> Dodaj nowy</a>
+                    </div>
+                </div>
+            </div>
+            <table  class="table table-striped table-bordered" id="negotiationTable">
+                <thead>
+                <th>Typ</th>
+                <th>Wyrażenie</th>
+                <th>Akcje</th>
+                </thead>
+                <tbody>
+                {% for key, expression in expressions %}
+                    <tr>
+                        <td>{{ expression.negotiationCategory }}</td>
+                        <td>{{ expression.expression }}</td>
+                        <td>
+                            <a class="delete" title="Usuń" data-toggle="tooltip" href="/deleteexpression/{{ expression.id }}"onclick="return confirm('Czy usunąć wyrażenie?')"><i class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal fade" id="new" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Dodaj wyrażenie</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{ form_start(expressionForm)}}
+                    <p>Typ negocjacji:</p>
+                    {{ form_widget(expressionForm.negotiationCategory) }}
+                    <p>Wyrażenie:</p>
+                    {{ form_widget(expressionForm.expression) }}
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary modal-submit">Dodaj</button>
+                    </div>
+                    {{ form_end(expressionForm) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

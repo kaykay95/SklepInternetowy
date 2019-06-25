@@ -1,9 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nowy produkt{% endblock %}
+{% block title %}Hello EditProductController!{% endblock %}
 
 {% block main %}
-    <h1>Nowy produkt</h1>
+
+    <h1>Edytuj produkt</h1>
 
     {{ form_start(product) }}
     <div class="form-row">
@@ -28,8 +29,9 @@
     </div>
     <br>
     <div>
-        <button class="btn btn-primary">Dodaj</button>
+        <button class="btn btn-primary">Edytuj</button>
         <a type="button" class="btn btn-secondary" href="{{ path('product_management') }}">Anuluj</a>
     </div>
     {{ form_end(product) }}
+
 {% endblock %}
