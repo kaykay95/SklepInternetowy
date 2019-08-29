@@ -53,9 +53,12 @@ class ProductController extends AbstractController
         $negotiation = new Negotiation($user_id, $product, $date, $previousPrice);
         $form = $this->createFormBuilder($negotiation)
             ->add('quantity',null, array(
-                'attr' => ['min' => 1]))
+                'attr' => ['min' => 1,
+                           'max' => 999]))
             ->add('description')
-            ->add('desiredDiscount')
+            ->add('desiredDiscount',null, array(
+                'attr' => ['min' => 0,
+                           'max' => 999999]))
             ->getForm();
         $form->handleRequest($request);
 

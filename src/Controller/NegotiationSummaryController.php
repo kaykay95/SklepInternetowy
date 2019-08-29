@@ -102,7 +102,7 @@ class NegotiationSummaryController extends AbstractController
 
                 $correctByCategory = $this->checkIfNegotiationExpressionIsCorrectByCategory($category, $negotiation->getUserId(), $negotiation->getProductId(), $negotiation->getQuantity());
                 if($correctByCategory) {
-                    $negotiation->setCorrectExpressionbyCategory($correctByCategory);
+                    $negotiation->setCorrectExpressionbyCategory(true);
 
                      if ($this->getDoctrine()->getRepository(Negotiation::class)->findByUserProductAndCategory( $this->getUser()->getId(), $product -> getId(), $category) == null) {
                          $categoryNotUsed = true;

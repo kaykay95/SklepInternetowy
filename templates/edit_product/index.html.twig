@@ -17,16 +17,20 @@
     </div>
     <div class="form-row">
         {{ form_label(product.price, 'Cena nominalna') }}
-        {{ form_widget(product.price) }}
+        {{ form_widget(product.price, {'type':'number', 'attr': { 'autocomplete':'off', 'min':0, 'step': 0.01, 'data-number-to-fixed':2, 'data-number-stepfactor':100, 'class':'currency'}})}}
     </div>
     <div class="form-row">
         {{ form_label(product.minimalPrice, 'Cena minimalna') }}
-        {{ form_widget(product.minimalPrice) }}
+        {{ form_widget(product.minimalPrice, {'type':'number', 'attr': { 'autocomplete':'off', 'min':0, 'step': 0.01, 'data-number-to-fixed':2, 'data-number-stepfactor':100, 'class':'currency'}})}}
     </div>
     <div class="form-row">
         {{ form_label(product.negotiationRatio, 'Współczynnik negocjacji') }}
-        {{ form_widget(product.negotiationRatio) }}
     </div>
+        <div class="row">
+            <div class="col-11">{{ form_widget(product.negotiationRatio, {'type':'number', 'attr': { 'autocomplete':'off', 'min':0, 'step': 1}})}}</div>
+            <div class="col-1">%</div>
+        </div>
+
     <br>
     <div>
         <button class="btn btn-primary">Edytuj</button>

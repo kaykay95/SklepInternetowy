@@ -25,7 +25,7 @@ class Test
 {
     public static function getGroups()
     {
-        return [];
+        return array();
     }
 }
 EOPHP
@@ -35,7 +35,7 @@ class PHPUnit_Util_Test
 {
     public static function getGroups()
     {
-        return [];
+        return array();
     }
 }
 
@@ -73,16 +73,14 @@ Unsilenced deprecation notices (3)
   1x: unsilenced bar deprecation
     1x in FooTestCase::testNonLegacyBar
 
-Remaining deprecation notices (1)
+Legacy deprecation notices (1)
+
+Other deprecation notices (2)
+
+  1x: root deprecation
 
   1x: silenced bar deprecation
     1x in FooTestCase::testNonLegacyBar
-
-Legacy deprecation notices (1)
-
-Other deprecation notices (1)
-
-  1x: root deprecation
 
 Shutdown-time deprecations:
 

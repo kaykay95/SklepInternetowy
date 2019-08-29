@@ -38,7 +38,11 @@ class UserType extends AbstractType
             ->add('surname', TextType::class)
             ->add('street', TextType::class)
             ->add('city', TextType::class)
-            ->add('postcode', TextType::class)
+            ->add('postcode', TextType::class, [
+                'attr' => [
+                    'pattern' => '\d{2}-\d{3}'
+                ]
+            ])
         ;
     }
 

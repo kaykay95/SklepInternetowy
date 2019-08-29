@@ -15,9 +15,15 @@ class EditProductType extends AbstractType
         $builder
             ->add('name')
             ->add('description', TextareaType::class)
-            ->add('price')
-            ->add('minimalPrice')
-            ->add('negotiationRatio')
+            ->add('price', null,  array(
+                'attr' => ['min' => 0,
+                    'max' => 999999]))
+            ->add('minimalPrice', null,  array(
+                'attr' => ['min' => 0,
+                    'max' => 999999]))
+            ->add('negotiationRatio',null, array(
+                'attr' => ['min' => 0,
+                    'max' => 99]))
         ;
     }
 
